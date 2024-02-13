@@ -1,7 +1,7 @@
 <script setup>
     import MiniCart from "@/Components/ShopNavbar/MiniCart.vue";
     import UserMenu from "@/Components/ShopNavbar/UserMenu.vue";
-    import TheWhishlist from '@/Components/ShopNavbar/TheWhishlist.vue'
+    import TheWishlist from '@/Components/ShopNavbar/TheWishlist.vue'
 </script>
 
 <template>
@@ -18,7 +18,7 @@
 
                     <!-- Right Side -->
                     <div class="flex items-center">
-                        <TheWhishlist class="mr-1"></TheWhishlist>
+                        <TheWishlist class="mr-1"></TheWishlist>
                         <UserMenu class="mr-1" :user="$page.props.auth.user" />
                         <MiniCart :user="$page.props.auth.user" />
                     </div>

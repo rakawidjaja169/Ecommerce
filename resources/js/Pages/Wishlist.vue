@@ -6,16 +6,16 @@ const props = defineProps({
     products: Array,
 });
 
-const toggleWhishlist = (id) => {
-    Inertia.post(route("whishlist.toggle", { id: id }));
+const toggleWishlist = (id) => {
+    Inertia.post(route("wishlist.toggle", { id: id }));
 };
 
-const emptyWhishlist = () => {
-    Inertia.delete(route("whishlist.destroy"));
+const emptyWishlist = () => {
+    Inertia.delete(route("wishlist.destroy"));
 };
 
-const moveToCartFromWhishlist = (id) => {
-    Inertia.post(route("whishlist.moveToCart", { id: id }));
+const moveToCartFromWishlist = (id) => {
+    Inertia.post(route("wishlist.moveToCart", { id: id }));
 };
 
 const productImage = (product) => {
@@ -29,25 +29,25 @@ const productImage = (product) => {
 
 <template>
     <ShopLayout>
-        <Head title="Whishlist" />
+        <Head title="Wishlist" />
 
         <div class="max-w-lg mx-auto">
             <header class="py-6">
-                <h2 class="text-2xl uppercase font-medium">Whishlist</h2>
+                <h2 class="text-2xl uppercase font-medium">Wishlist</h2>
                 <div class="flex items-center justify-between">
                     <span
                         v-if="products.length > 0"
-                        class="text-zinc-500 text-sm">You have {{ products.length }} {{ products.length === 1 ? "product" : "products" }} in your whishlist</span>
+                        class="text-zinc-500 text-sm">You have {{ products.length }} {{ products.length === 1 ? "product" : "products" }} in your wishlist</span>
                     <span
                         v-else
-                        class="text-zinc-500 text-sm">You have no items in your whishlist</span>
+                        class="text-zinc-500 text-sm">You have no items in your wishlist</span>
                 
-                        <form @submit.prevent="emptyWhishlist()" v-if="products.length > 0">
+                        <form @submit.prevent="emptyWishlist()" v-if="products.length > 0">
                             <button
                                 type="submit"
                                 class="text-zinc-500 text-xs hover:underline"
                             >
-                                Empty whishlist
+                                Empty wishlist
                             </button>
                         </form>
                 </div>
@@ -66,17 +66,17 @@ const productImage = (product) => {
                             <div class="flex items-start justify-between mb-2">
                                 <span class="text-xs font-medium">{{ product.name }}</span>
                                 
-                                <form @submit.prevent="toggleWhishlist(product.id)">
+                                <form @submit.prevent="toggleWishlist(product.id)">
                                     <button
                                         type="submit"
                                         class="text-red-500 flex items-center space-x-1">
                                             <svg class="w-[17px] h-[17px] flex-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                                            <span class="block text-xs text-zinc-600">Remove from whishlist</span>
+                                            <span class="block text-xs text-zinc-600">Remove from wishlist</span>
                                     </button>
                                 </form>
                             </div>
 
-                            <form @submit.prevent="moveToCartFromWhishlist(product.id)" class="mb-2">
+                            <form @submit.prevent="moveToCartFromWishlist(product.id)" class="mb-2">
                                 <button
                                     type="submit"
                                     class="text-zinc-600 flex items-center space-x-1">

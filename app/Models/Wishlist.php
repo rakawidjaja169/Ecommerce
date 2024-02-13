@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Whishlist extends Pivot
+class Wishlist extends Pivot
 {
-    protected $table = 'whishlists';
+    protected $table = 'wishlists';
 
     /**
      * @param Product $product
@@ -15,20 +15,20 @@ class Whishlist extends Pivot
      */
     public static function toggle(Product $product): void
     {
-        $productInWhishlist = auth()->user()->whishlist()
+        $productInWishlist = auth()->user()->wishlist()
             ->wherePivot('product_id', $product->id)
             ->first();
 
-        if (!$productInWhishlist) {
-            auth()->user()->whishlist()->attach($product->id);
+        if (!$productInWishlist) {
+            auth()->user()->wishlist()->attach($product->id);
         } else {
-            auth()->user()->whishlist()->detach($product->id);
+            auth()->user()->wishlist()->detach($product->id);
         }
     }
 
     public static function getContent(): Collection
     {
-        return auth()->user()->whishlist;
+        return auth()->user()->wishlist;
     }
 
     /**
@@ -38,11 +38,11 @@ class Whishlist extends Pivot
     public static function moveToCart(Product $product): void
     {
         auth()->user()->cart()->attach($product->id, ['quantity' => 1]);
-        auth()->user()->whishlist()->detach($product->id);
+        auth()->user()->wishlist()->detach($product->id);
     }
 
     public static function empty(): void
     {
-        auth()->user()->whishlist()->detach();
+        auth()->user()->wishlist()->detach();
     }
 }

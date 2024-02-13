@@ -52,11 +52,11 @@ class User extends Authenticatable
             ->using(Cart::class);
     }
 
-    public function whishlist()
+    public function wishlist()
     {
-        return $this->belongsToMany(Product::class, 'whishlists')
+        return $this->belongsToMany(Product::class, 'wishlists')
             ->withTimestamps()
-            ->using(Whishlist::class);
+            ->using(Wishlist::class);
     }
 
     public function orders()

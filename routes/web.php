@@ -10,7 +10,7 @@ use App\Http\Controllers\DashboardSettingsProfileController;
 use App\Http\Controllers\DashboardSettingsPasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardOrderController;
-use App\Http\Controllers\WhishlistController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 // SHOP
@@ -36,11 +36,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/{id}/move-to-cart', MoveToCartController::class)->name('cart.moveToCart');
     });
 
-    // WHISHLIST
-    Route::get('/whishlist', [WhishlistController::class, 'index'])->name('whishlist.index');
-    Route::post('/whishlist/{product:id}', [WhishlistController::class, 'toggle'])->name('whishlist.toggle');
-    Route::post('/whishlist/{product:id}/move-to-cart', [WhishlistController::class, 'moveToCart'])->name('whishlist.moveToCart');
-    Route::delete('/whishlist', [WhishlistController::class, 'destroy'])->name('whishlist.destroy');
+    // WISHLIST
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+    Route::post('/wishlist/{product:id}', [WishlistController::class, 'toggle'])->name('wishlist.toggle');
+    Route::post('/wishlist/{product:id}/move-to-cart', [WishlistController::class, 'moveToCart'])->name('wishlist.moveToCart');
+    Route::delete('/wishlist', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
 
     // CHECKOUT
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout');

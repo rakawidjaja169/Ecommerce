@@ -3,29 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Whishlist;
+use App\Models\Wishlist;
 
-class WhishlistController extends Controller
+class WishlistController extends Controller
 {
     public function index()
     {
-        return inertia('Whishlist', [
-            'products' => Whishlist::getContent()
+        return inertia('Wishlist', [
+            'products' => Wishlist::getContent()
         ]);
     }
 
     public function toggle(Product $product)
     {
-        Whishlist::toggle($product);
+        Wishlist::toggle($product);
     }
 
     public function moveToCart(Product $product)
     {
-        Whishlist::moveToCart($product);
+        Wishlist::moveToCart($product);
     }
 
     public function destroy()
     {
-        Whishlist::empty();
+        Wishlist::empty();
     }
 }

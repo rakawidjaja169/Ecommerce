@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\Cart;
-use App\Models\Whishlist;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -43,7 +43,7 @@ class HandleInertiaRequests extends Middleware
             'cart' => auth()->user() ? Cart::getContent() : [],
 
             // Return only the count
-            'whishlist' => auth()->user() ? Whishlist::getContent() : [],
+            'wishlist' => auth()->user() ? Wishlist::getContent() : [],
 
             // Flash messages
             'flash' => [

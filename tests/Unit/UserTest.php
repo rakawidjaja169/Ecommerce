@@ -18,11 +18,11 @@ class UserTest extends TestCase
         $this->assertInstanceOf(Collection::class, $user->cart);
     }
 
-    public function test_user_has_many_whishlist_items()
+    public function test_user_has_many_wishlist_items()
     {
         $user = User::factory()->create();
 
-        $this->assertInstanceOf(Collection::class, $user->whishlist);
+        $this->assertInstanceOf(Collection::class, $user->wishlist);
     }
 
     public function test_user_can_make_many_orders()

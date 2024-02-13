@@ -17,12 +17,12 @@ const addToCart = () => {
     });
 };
 
-const inWhishlist = (id) => {
-    return usePage().props.value.whishlist.find(product => { return product.id === id }) ? true : false;
+const inWishlist = (id) => {
+    return usePage().props.value.wishlist.find(product => { return product.id === id }) ? true : false;
 }
 
-const toggleWhishlist = () => {
-    Inertia.post(route("whishlist.toggle", { id: props.product.id }));
+const toggleWishlist = () => {
+    Inertia.post(route("wishlist.toggle", { id: props.product.id }));
 };
 
 const productImage = () => {
@@ -47,13 +47,13 @@ const productImage = () => {
             <div class="mt-6 sm:mt-0">
                 <h3 class="text-2xl font-medium mb-1">{{ product.name }}</h3>
 
-                <form @submit.prevent="toggleWhishlist()" class="mb-4">
+                <form @submit.prevent="toggleWishlist()" class="mb-4">
                     <button
                         type="submit"
                         class="flex items-center space-x-1"
-                        :class="inWhishlist(product.id) ? 'text-red-500' : 'text-zinc-500 hover:text-red-500'">
+                        :class="inWishlist(product.id) ? 'text-red-500' : 'text-zinc-500 hover:text-red-500'">
                             <svg class="w-[17px] h-[17px] flex-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                            <span class="block text-xs text-zinc-600">{{ inWhishlist(product.id) ? 'Remove from whishlist' : 'Add to whishlist' }}</span>
+                            <span class="block text-xs text-zinc-600">{{ inWishlist(product.id) ? 'Remove from wishlist' : 'Add to wishlist' }}</span>
                         </button>
                 </form>
 
