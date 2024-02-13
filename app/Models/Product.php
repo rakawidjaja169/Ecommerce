@@ -65,7 +65,7 @@ class Product extends Model
                     $query
                         ->selectRaw('products.*, SUM(quantity) as best_selling')
                         ->leftJoin('order_product', 'products.id', '=', 'order_product.product_id')
-                        ->groupBy('products.id')
+                        ->groupBy('products.id', 'products.category_id', 'products.name', 'products.slug', 'products.description', 'products.price', 'products.available_quantity', 'products.created_at', 'products.updated_at')
                         ->orderBy('best_selling', 'desc');
                     break;
                 default:

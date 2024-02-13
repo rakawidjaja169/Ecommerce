@@ -2,6 +2,11 @@
 import { ref } from 'vue';
 
 const showSettings = ref(false);
+const showAdmin = ref(false);
+
+const toggleShowAdmin = () => {
+    showAdmin.value = !showAdmin.value
+}
 
 const toggleShowSettings = () => {
     showSettings.value = !showSettings.value
@@ -35,6 +40,25 @@ const toggleShowSettings = () => {
         >
             <span>Shop</span>
         </Link>
+
+        <span class="block text-xxs uppercase text-slate-400 pl-[30px] pt-8 pb-2">Admin</span>
+
+        <div class="relative">
+            <div @click="toggleShowAdmin()" class="flex items-center justify-between px-7 py-2 text-slate-300 text-sm cursor-pointer">
+                <span>Product</span>
+                <svg class="w-[18px] h-[18px] transform transition duration-250" :class="{ 'rotate-180' : showAdmin }" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
+            </div>
+
+            <div v-if="showAdmin">
+                <Link
+                    class="flex items-center space-x-2 text-sm border-l-4 pl-8 py-2 transition"
+                    :class="route().current('products.index') ? 'border-c-green-100 bg-slate-600 text-white' : 'border-transparent text-slate-300'"
+                    :href="route('products.index')"
+                >
+                    <span>Product Settings</span>
+                </Link>
+            </div>
+        </div>
 
         <span class="block text-xxs uppercase text-slate-400 pl-[30px] pt-8 pb-2">Account</span>
 

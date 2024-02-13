@@ -52,6 +52,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/orders', [DashboardOrderController::class, 'index'])->name('order.index');
     Route::put('/dashboard/{order}/orders', [DashboardOrderController::class, 'update'])->name('order.update');
 
+    // PRODUCTS
+    Route::get('/dashboard/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/dashboard/products/create', [ProductController::class, 'create'])->name('products.create');
+
     // DASHBOARD SETTINGS
     Route::get('/dashboard/settings/profile', [DashboardSettingsProfileController::class, 'edit'])->name('settings.profile.edit');
     Route::patch('/dashboard/settings/profile', [DashboardSettingsProfileController::class, 'update'])->name('settings.profile.update');
