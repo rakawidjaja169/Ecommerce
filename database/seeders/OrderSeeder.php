@@ -29,7 +29,6 @@ class OrderSeeder extends Seeder
             'user_id' => $user->id,
             'status' => 'Paid',
             'total' => $product->price,
-            'stripe_session_id' => 'test_stripe_session_id'
         ]);
 
         $firstOrder->products()->attach($product->id, [
@@ -51,7 +50,6 @@ class OrderSeeder extends Seeder
             'user_id' => $user->id,
             'status' => 'Paid',
             'total_amount' => $product->price,
-            'stripe_session_id' => 'test_stripe_session_id',
             'type' => 'card'
         ]);
 
@@ -60,7 +58,6 @@ class OrderSeeder extends Seeder
             'user_id' => $user->id,
             'status' => 'Paid',
             'total' => $product2->price,
-            'stripe_session_id' => 'test_stripe_session_id2',
             'created_at' => Carbon::now()->subDays(2),
             'updated_at' => Carbon::now()->subDays(2)
         ]);
@@ -88,7 +85,6 @@ class OrderSeeder extends Seeder
             'user_id' => $user->id,
             'status' => 'Paid',
             'total_amount' => $product2->price,
-            'stripe_session_id' => 'test_stripe_session_id2',
             'type' => 'card',
             'created_at' => Carbon::now()->subDays(2),
             'updated_at' => Carbon::now()->subDays(2)
@@ -99,7 +95,6 @@ class OrderSeeder extends Seeder
             'user_id' => $user->id,
             'status' => 'Paid',
             'total' => $product3->price,
-            'stripe_session_id' => 'test_stripe_session_id3',
             'created_at' => Carbon::now()->subDays(30),
             'updated_at' => Carbon::now()->subDays(30)
         ]);
@@ -127,7 +122,6 @@ class OrderSeeder extends Seeder
             'user_id' => $user->id,
             'status' => 'Paid',
             'total_amount' => $product3->price,
-            'stripe_session_id' => 'test_stripe_session_id3',
             'type' => 'card',
             'created_at' => Carbon::now()->subDays(30),
             'updated_at' => Carbon::now()->subDays(30)

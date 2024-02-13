@@ -2,6 +2,7 @@
 import DashboardNavbar from "@/Components/Dashboard/DashboardNavbar.vue";
 import DashboardAsideMenu from "@/Components/Dashboard/DashboardAsideMenu.vue";
 import FlashMessage from '@/Components/FlashMessage.vue'
+import FlashError from '@/Components/FlashError.vue'
 </script>
 
 <template>
@@ -10,6 +11,10 @@ import FlashMessage from '@/Components/FlashMessage.vue'
 
         <transition name="from-r">
             <FlashMessage v-if="$page.props.flash.message"></FlashMessage>
+        </transition>
+
+        <transition name="from-r">
+            <FlashError v-if="$page.props.flash.error"></FlashError>
         </transition>
 
         <div class="md:flex md:flex-grow md:overflow-hidden">

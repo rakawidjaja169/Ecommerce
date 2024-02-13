@@ -23,7 +23,6 @@ class PaymentFactory extends Factory
             'order_id' => Order::factory()->create(),
             'total_amount' => 100,
             'status' => 'Pending',
-            'stripe_session_id' => random_bytes(32),
             'type' => 'card'
         ];
     }

@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->decimal('total_amount', 6, 2);
             $table->enum('status', ['Pending', 'Paid', 'Failed']);
-            $table->string('stripe_session_id');
             $table->string('type');
             $table->timestamps();
         });

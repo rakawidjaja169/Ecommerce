@@ -3,6 +3,7 @@ import DashboardLayout from '@/Layouts/DashboardLayout.vue';
 import { ref, watch } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import pickBy from 'lodash/pickBy'
+import { Link } from '@inertiajs/inertia-vue3'
 
 const props = defineProps({
     orders: Array
@@ -75,9 +76,13 @@ const productImage = (product) => {
                     </td>
                     <td class="px-4 py-3 text-center ">
                         <span
-                            :class="{ 'bg-c-green-100 text-c-green-600' : order.status === 'Paid' }"
-                            class="px-3 py-0.5 text-xs rounded-full">
-                                {{ order.status }}
+                            :class="{
+                                'bg-c-green-100 text-c-green-600': order.status === 'Paid',
+                                'bg-blue-300 text-blue-600': order.status === 'Approved'
+                            }"
+                            class="px-3 py-0.5 text-xs rounded-full"
+                        >
+                            {{ order.status }}
                         </span>
                     </td>
                     <td class="px-4 py-3 text-center ">
@@ -122,6 +127,18 @@ const productImage = (product) => {
                 <div class="bg-zinc-100 rounded p-4 flex items-center justify-between mt-4">
                     <span class="text-zinc-500 uppercase text-xs">Total</span>
                     <span class="font-medium block">€{{ selectedOrder.total }}</span>
+                </div>
+
+                <div>
+                    <Link
+                    v-if="selectedOrder.id !== undefined"
+                    :href="route('order.update', { order: selectedOrder.id })"
+                    class="bg-c-green-600 hover:bg-c-green-100 text-white p-2 rounded-md text-xs font-medium float-right mt-4" 
+                    as="button" method="put"
+                    @click="resetSelectOrder()"
+                    >
+                    Approve
+                    </Link>
                 </div>
         </div>
 

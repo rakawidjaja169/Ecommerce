@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
-            $table->enum('status', ['Unpaid', 'Paid', 'Shipped', 'Completed', 'Canceled']);
+            $table->enum('status', ['Unpaid', 'Paid', 'Shipped', 'Completed', 'Canceled', 'Approved']);
             $table->decimal('total', 6, 2);
-            $table->string('stripe_session_id')->unique();
             $table->timestamps();
         });
     }

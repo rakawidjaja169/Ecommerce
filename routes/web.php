@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
     // DASHBOARD
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/orders', [DashboardOrderController::class, 'index'])->name('order.index');
+    Route::put('/dashboard/{order}/orders', [DashboardOrderController::class, 'update'])->name('order.update');
 
     // DASHBOARD SETTINGS
     Route::get('/dashboard/settings/profile', [DashboardSettingsProfileController::class, 'edit'])->name('settings.profile.edit');

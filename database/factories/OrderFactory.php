@@ -22,7 +22,6 @@ class OrderFactory extends Factory
             'user_id' => User::factory(),
             'total' => 100,
             'status' => 'Unpaid',
-            'stripe_session_id' => Str::random(20)
         ];
     }
 }
