@@ -50,8 +50,26 @@ const slideTo = (val) => {
 
         <div class="max-w-2xl mx-auto sm:flex sm:space-x-8 mt-8">
             <!-- Product image -->
-            <div class="w-full sm:w-1/2 h-96 flex-none">
-                <img :src="productImage()" alt="product_image" class="w-full h-full object-cover">
+            <div class="w-full sm:w-1/2 h-full flex-none">
+                <!-- <img :src="productImage()" alt="product_image" class="w-full h-full object-cover"> -->
+                <Carousel id="gallery" :items-to-show="1" :wrap-around="false" v-model="currentSlide">
+                    <Slide v-for="slide in 10" :key="slide" class="w-full h-full object-cover">
+                        <!-- <div class="carousel__item">{{ slide }}</div> -->
+                        <img :src="productImage()" alt="product_image" class="carousel__item">
+                    </Slide>
+                </Carousel>
+                <Carousel
+                    id="thumbnails"
+                    :items-to-show="4"
+                    :wrap-around="true"
+                    v-model="currentSlide"
+                    ref="carousel"
+                >
+                    <Slide v-for="slide in 10" :key="slide">
+                        <!-- <div class="carousel__item" @click="slideTo(slide - 1)">{{ slide }}</div> -->
+                        <img :src="productImage()" alt="product_image" class="carousel__item" @click="slideTo(slide - 1)">
+                    </Slide>
+                </Carousel>
             </div>
 
             <div class="mt-6 sm:mt-0">
@@ -98,25 +116,5 @@ const slideTo = (val) => {
                 </div>
             </div>
         </div>
-
-        <Carousel id="gallery" :items-to-show="1" :wrap-around="false" v-model="currentSlide">
-            <Slide v-for="slide in 10" :key="slide">
-                <!-- <div class="carousel__item">{{ slide }}</div> -->
-                <img :src="productImage()" alt="product_image" class="carousel__item">
-            </Slide>
-        </Carousel>
-
-        <Carousel
-            id="thumbnails"
-            :items-to-show="4"
-            :wrap-around="true"
-            v-model="currentSlide"
-            ref="carousel"
-        >
-            <Slide v-for="slide in 10" :key="slide">
-                <!-- <div class="carousel__item" @click="slideTo(slide - 1)">{{ slide }}</div> -->
-                <img :src="productImage()" alt="product_image" class="carousel__item" @click="slideTo(slide - 1)">
-            </Slide>
-        </Carousel>
     </ShopLayout>
 </template>
